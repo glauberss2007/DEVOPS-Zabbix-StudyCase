@@ -1,5 +1,6 @@
 # zabbix-5-monitor
 Configuring a Zabbix 5 monitoring environment
+
 ![image](https://user-images.githubusercontent.com/22028539/127569725-ea6d1b67-fbae-4c7d-a8b4-0eb9bb6c3eaf.png)
 
 ## What to monitor?
