@@ -116,3 +116,18 @@ You can integrate zabbix with diferent tools that can be founded in https://www.
 ![image](https://user-images.githubusercontent.com/22028539/127716562-9bc1e6b2-b2f8-47e2-adbf-57135dfb2625.png)
 
 PS: You can propose a integration solution in zabbix site.
+
+## Customer question befor start a project:
+- What do you want to monitor?
+- Which SO?
+- Are there web aplications?
+- What langages are used on web aplication?
+- What are the type and brand of network?
+- What are the type and brand of printers?
+- Show zabbix working and a POC.
+- Which alerts are important?
+- Implementation only or month maintanance?
+
+There is a budget example spreadsheet in this repository.
+
+
