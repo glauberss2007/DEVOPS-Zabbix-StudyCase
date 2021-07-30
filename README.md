@@ -114,4 +114,3 @@ It is posible to use e-mail, sms, telegram and others tools to send alerts when 
 You can integrate zabbix with diferent tools that can be founded in https://www.zabbix.com/br/integrations
 
 ![image](https://user-images.githubusercontent.com/22028539/127716562-9bc1e6b2-b2f8-47e2-adbf-57135dfb2625.png)
-
