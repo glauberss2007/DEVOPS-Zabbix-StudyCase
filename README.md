@@ -130,6 +130,24 @@ PS: You can propose a integration solution in zabbix site.
 
 There is a [budget example spreadsheet](https://github.com/glauberss2007/zabbix-5-monitor/blob/main/zabbiz_project_budget_example.xlsx) in this repository.
 
+## Creating a virtual enveronment using vagrant
+In this step we will use "VAGRANT" to create 1 Linux VM in AWS, another in GCP, a mac ans windows VMs using VirtualBox,
+
+### Vagrant
+Vagrant is a tool for building and managing virtual machine environments in a single workflow. With an easy-to-use workflow and focus on automation, Vagrant lowers development environment setup time, increases production parity, and makes the "works on my machine" excuse a relic of the past.
+
+1. My syustem is opensuse, so i will use zypper to install virtualbox, vmware and vagrant:
+
+```
+sudo zypper in autoconf automake gcc kernel-devel make
+
+sudo zypper update
+sudo zypper install virtualbox
+
+sudo wget --no-check-certificate https://releases.hashicorp.com/vagrant/1.8.5/vagrant_1.8.5_x86_64.rpm -O vagrant.rpm
+sudo zypper in vagrant.rpm
+```
+
 ## Zabbix Installation strategies
 
 
