@@ -136,7 +136,7 @@ In this step we will use "VAGRANT" to create 1 Linux VM in AWS, another in GCP, 
 ### Vagrant
 Vagrant is a tool for building and managing virtual machine environments in a single workflow. With an easy-to-use workflow and focus on automation, Vagrant lowers development environment setup time, increases production parity, and makes the "works on my machine" excuse a relic of the past.
 
-1. My syustem is opensuse, so i will use zypper to install virtualbox, vmware and vagrant:
+1. My system is opensuse, so i will use zypper to install virtualbox and vagrant:
 
 ```
 sudo zypper in autoconf automake gcc kernel-devel make
@@ -144,114 +144,20 @@ sudo zypper in autoconf automake gcc kernel-devel make
 sudo zypper update
 sudo zypper install virtualbox
 
-sudo wget --no-check-certificate https://releases.hashicorp.com/vagrant/1.8.5/vagrant_1.8.5_x86_64.rpm -O vagrant.rpm
+sudo wget --no-check-certificate https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.rpm -O vagrant.rpm
 sudo zypper in vagrant.rpm
 ```
-2. Execute the following comand in order to provisioning a Windows Server Vagrant box:
+2. Select the OS box to deploy at https://app.vagrantup.com/boxes/search, in this case a centos linux:
 
-    Create a new Windows Server machine with a valid name
-    Give it a local network IP
-    Set up IIS
-    Delete the default IIS website
-    Install .NET 4.5.2
-PS: [Vagrant basebox link](www.vagrantbox.es)
+3. Some vagrant commands usefull:
 
-Create following scripts:
-
-install-iis.cmd
-```
-@echo off
- 
-echo "Installing IIS 7.5; it will take a while..."
-CMD /C START /w PKGMGR.EXE /l:log.etw /iu:IIS-WebServerRole
-echo "Done installing IIS."
-```
-delete-default-iis-website.psl
-```
-$ErrorActionPreference = "Stop"
-echo "Deleting the default IIS website..."
- 
-import-module webadministration
-Stop-WebSite 'Default Web Site'
-Remove-Website 'Default Web Site'
- 
-echo "Default website deleted."
-```
-install-dot-net.psl
-```
-$ErrorActionPreference = "Stop"
- 
-import-module servermanager
-echo "Enabling .NET Framework"
-add-windowsfeature as-net-framework
-```
-install-dot-net-45.cmd
-```
-@echo off
- 
-echo "Installing .NET Framework 4.5.2"
-C:vagrantresourcesNDP452-KB2901907-x86-x64-AllOS-ENU.exe /q
-echo "Done!"
-```
-
-Then create the VM, configure network and execute the scripts with this final vagrant file is:
-
-To create the vagrant file execute
+Create the Vagrantfile and use init and up comands to create the VM.
 ```
 vagrant init
-```
-
-and then write the configuration as below:
-```
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
- 
-if ! File.exists?('./resources/NDP452-KB2901907-x86-x64-AllOS-ENU.exe')
-  puts '.Net 4.5.2 installer could not be found!'
-  puts "Please run:n  wget http://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe"
-  exit 1
-end
- 
-if ! File.exists?('./resources/Octopus.Tentacle.2.6.0.778-x64.msi')
-  puts 'Octopus Tentacle installer could not be found!'
-  puts "Please run:n  wget http://download.octopusdeploy.com/octopus/Octopus.Tentacle.2.6.0.778-x64.msi"
-  exit 1
-end
- 
-Vagrant.configure(2) do |config|
- 
-  config.vm.box = "ferventcoder/win2008r2-x64-nocm"
-  config.vm.guest = :windows
-  config.vm.communicator = "winrm"
- 
-  config.vm.provision :shell, path: "scripts/install-iis.cmd"
-  config.vm.provision :shell, path: "scripts/delete-default-iis-website.ps1"
-  config.vm.provision :shell, path: "scripts/install-dot-net.ps1"
-  config.vm.provision :shell, path: "scripts/install-dot-net-45.cmd" 
- 
-  config.vm.boot_timeout = 600
- 
-  config.vm.define "web" do |web|
-    dev.vm.network "private_network", ip: "192.168.100.10"
-    dev.vm.host_name = "vagranttests.dev"
-    dev.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
-  end
- 
-  config.vm.provider "virtualbox" do |vb|
-    # Display the VirtualBox GUI when booting the machine
-    # vb.gui = true
-     
-    # Customize the amount of memory on the VM:
-    vb.cpus = 2
-    vb.memory = 2048
-  end
- 
-end
-```
-Run it using:
-```
-vagrant up web
-
+vagrant up {NAME}
+vagrant ssh
+vagrant halt
+vagrant destroy
 ```
 
 
