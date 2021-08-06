@@ -131,7 +131,7 @@ PS: You can propose a integration solution in zabbix site.
 There is a [budget example spreadsheet](https://github.com/glauberss2007/zabbix-5-monitor/blob/main/zabbiz_project_budget_example.xlsx) in this repository.
 
 ## Creating a virtual enveronment using vagrant
-In this step we will use "VAGRANT" to create 1 Linux VM in AWS, another in GCP, a mac ans windows VMs using VirtualBox,
+In this step we will use "VAGRANT" to create 1 Linux VM in virtualbox.
 
 ### Vagrant
 Vagrant is a tool for building and managing virtual machine environments in a single workflow. With an easy-to-use workflow and focus on automation, Vagrant lowers development environment setup time, increases production parity, and makes the "works on my machine" excuse a relic of the past.
