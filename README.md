@@ -180,4 +180,22 @@ https://www.zabbix.com/documentation/current/pt/manual
 
 ## SNMP monitoring
 
+Install snmp package for debian based distributions or net-snmp-utils for centos distributions.
+``
+apt get install snmp
+``
+
+Get information from a router using:
+``
+snmpwalk -c public -v2c <IPHOST>
+``
+
+PS: The SNMP must be enabled on router.
+
+- [Enable SNMP in linksys router](https://www.techwalla.com/articles/how-to-enable-the-snmp-on-a-linksys)
+- [Enable SNMP on cisco switch](https://www.manageengine.com/products/oputils/enable-snmp-cisco-router.html)
+- [Enable SNMP on 3com equiupments](https://community.spiceworks.com/topic/97329-how-do-i-setup-snmp-on-a-3com-switch-4000-series)
+
+
+
 
