@@ -160,8 +160,24 @@ vagrant halt
 vagrant destroy
 ```
 
-
-
 ## Zabbix Installation strategies
+
+We will use the https://www.zabbix.com/br/download to create the script for zabbix server isntalation!
+
+Depending of the ENV we can use all in one or 3 layers instalation.
+
+The zabbix has several new features as we can see at https://www.zabbix.com/documentation/current/manual/introduction/whatsnew540
+
+## Creating host groups and templates
+
+[Add host](https://www.zabbix.com/documentation/current/pt/manual/config/hosts/host)
+
+PS: Default templates normally consume a lot of DB. It is important to custmize then removing unecessary trigers and data collection.
+
+## Adding hosts
+
+https://www.zabbix.com/documentation/current/pt/manual
+
+## SNMP monitoring
 
 
